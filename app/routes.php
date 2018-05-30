@@ -95,7 +95,7 @@ $app->group('', function () {
         }
 
 
-        $image = $this->ImageValidator->moveUploadedFile($this->container->directory_IMG_admins, $profileImage, $table, $id);
+        $image = $this->ImageValidator->moveUploadedFile($this->directory_IMG_admins, $profileImage, $table, $id);
 
         $user = User::create([
             'email' => $request->getParam('email'),
