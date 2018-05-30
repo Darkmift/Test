@@ -1,0 +1,48 @@
+{% include 'home.twig'%}
+{% set page_title = 'Edit course' %}
+{% block content %} 
+
+
+		<div id="edit" class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Edit details of {{ course.name }}</h4>
+				<a href="{{ base_url() }}/manage/deletecourse/{{ course.id }}" class="del btn btn-default">🗑</a>
+			</div>
+				<form class="panel-body" action="{{ base_url() }}/manage/editcourse/{{ course.id }}" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div class="form-group{{errors.name ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Name</span>
+							<input type="text" name="name" id="name" class="form-control" placeholder="Enter the course name" value="{{ old.name ? old.name : course.name }}">
+						</div>
+						{% if errors.name %}
+						<span class="form-control-feedback">{{ errors.name | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group{{errors.description ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Description</span>
+							<textarea name="description" id="description" placeholder="Type the course description" class="form-control">{{ old.description ? old.description : course.description }}</textarea>
+						</div>
+						{% if errors.description %}
+						<span class="form-control-feedback">{{ errors.description | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group{{errors.image ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">image</span>
+							<input type="file" name="image" id="image"  class="form-control" value="{{ old.image }}" >
+						</div>
+						{% if errors.image %}
+						<span class="form-control-feedback">{{ errors.image | first }}</span>
+						{% endif %}
+					</div>
+					<button type="submit" class="btn btn-default">Done</button>
+
+					{{ csrf.field | raw }}
+					
+				</form>
+		</div>
+	</div>
+ 
+ </div>
+{% endblock %}

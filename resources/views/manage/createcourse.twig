@@ -1,0 +1,49 @@
+{% include 'home.twig'%}
+{% set page_title = 'Add course' %}
+{% block content %} 
+
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Create a new course</h4>
+					</div>
+						<form class="panel-body" action="{{path_for('manage.createcourse')}}" method="post" autocomplete="off" enctype="multipart/form-data">
+							<div class="form-group{{errors.name ? ' has-danger' : '' }}">
+								<div class="input-group">
+									<span class="input-group-addon form-span">Name</span>
+									<input type="text" name="name" id="name" placeholder="Enter the course name" class="form-control" value="{{ old.name }}">
+								</div>
+								{% if errors.name %}
+								<span class="form-control-feedback">{{ errors.name | first }}</span>
+								{% endif %}
+							</div>
+							<div class="form-group  {{ description.phone ? ' has-danger' : '' }}">
+		                        <div class="input-group">
+		                            <span class="input-group-addon form-span">Description</span>
+		                            <textarea rows="5" id="description" name="description" class="form-control" placeholder="Type the course description" type="text" value="{{ old.description }}">
+		                            </textarea>
+		                        </div>
+		                        {% if errors.description %}
+								<span class="form-control-feedback">{{ errors.description | first }}</span>
+								{% endif %}
+		                    </div>
+		                    <div class="form-group{{errors.image ? ' has-danger' : '' }}">
+								<div class="input-group">
+									<span class="input-group-addon form-span">Browse image</span>
+									<input type="file" name="image" id="image"  class="form-control" value="{{ old.email }}" >
+								</div>
+								{% if errors.image %}
+								<span class="form-control-feedback">{{ errors.image | first }}</span>
+								{% endif %}
+							</div>
+							<button type="submit" class="btn btn-default">Add course</button>
+		
+							{{ csrf.field | raw }}
+							
+						</form>
+				</div>
+		</div>
+	</div>
+
+
+{% endblock %}

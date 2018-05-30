@@ -1,0 +1,87 @@
+{% include 'admin.twig'%}
+{% set page_title = 'Edit user' %}
+{% block content %} 
+
+
+		<div id="edit" class="panel panel-default">
+			<div class="panel-heading">
+				{% set name = admin.name %}
+				
+				<h4>Edit details of {{ admin.name }}</h4>
+				{% for user in auth.userslist[1:] if auth.user.name == name %}
+					<a href="{{ base_url() }}/admin/manage/deleteadmin/{{ admin.id }}" class="del btn btn-default" style="display: none;">🗑</a>
+				{% else %}
+					<a href="{{ base_url() }}/admin/manage/deleteadmin/{{ admin.id }}" class="del btn btn-default">🗑</a>
+				{% endfor %}
+
+			</div>
+				<form class="panel-body" action="{{ base_url() }}/admin/manage/editadmin/{{ admin.id }}" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div class="form-group{{errors.email ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">E-mail</span>
+							<input type="text" name="email" id="email" placeholder="you@domain.com" class="form-control" value="{{ old.email ? old.email : admin.email }}">
+						</div>
+						{% if errors.email %}
+						<span class="form-control-feedback">{{ errors.email | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group{{errors.name ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Name</span>
+							<input type="text" name="name" id="name" placeholder="Enter your name" class="form-control" value="{{ old.name ? old.name : admin.name }}">
+						</div>
+						{% if errors.name %}
+						<span class="form-control-feedback">{{ errors.name | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group  {{ errors.phone ? ' has-danger' : '' }}">
+                        <div class="input-group">
+                            <span class="input-group-addon form-span">phone</span>
+                            <input id="phone" name="phone" class="form-control" placeholder="enter your phone number" type="number" value="{{ old.phone ? old.phone : admin.phone }}">
+                        </div>
+                        {% if errors.phone %}
+						<span class="form-control-feedback">{{ errors.phone | first }}</span>
+						{% endif %}
+                    </div>
+                    {% if admin.role_id != 3 %}
+                    <div class="form-group  {{ errors.role ? ' has-danger' : '' }}">
+                        <div class="input-group">
+                        	<span class="input-group">Choose the Role-user</span>
+                            <label class="radio-inline">
+                            	
+                                <input type="radio" name="role" value="1" {{ admin.role_id == 1 ? 'checked="checked"' }} {{ auth.user.name == name and auth.role == 2 ? 'disabled="true"' }} >Sales
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="role" value="2" {{ admin.role_id == 2 ? 'checked="checked"' }}>Administrator
+                            </label> 
+                        </div>
+                        {% if errors.role %}
+						<span class="form-control-feedback">{{ errors.role | first }}</span>
+						{% endif %}
+                    </div>
+					{% endif %}
+                    <label hidden class="radio-inline">
+                        <input hidden type="radio" name="role" value="3" {{ admin.role_id == 3 ? 'checked="checked"' }}>
+                    </label>
+
+                    <div class="form-group{{errors.image ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">image</span>
+							<input type="file" name="image" id="image"  class="form-control" value="{{ old.image }}" >
+						</div>
+						{% if errors.image %}
+						<span class="form-control-feedback">{{ errors.image | first }}</span>
+						{% endif %}
+					</div>
+
+					<button type="submit" class="btn btn-default">Done</button>
+
+					{{ csrf.field | raw }}
+					
+				</form>
+		</div>
+	</div>
+ 
+ </div>
+{% endblock %}

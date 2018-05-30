@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800">
+        <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ base_url() }}/scss/style.scss"/>
+        <link rel="stylesheet" href="{{ base_url() }}/css/bootstrap.css">
+	<link rel="stylesheet" href="{{ base_url() }}/css/app.css">
+</head>
+<body>
+
+	{% include 'templates/partials/navigation.twig' %}
+
+	<div id="body" class="container">
+		{% include 'templates/partials/flash.twig' %}
+		{% block content %}{% endblock %}
+		
+	</div>
+
+	<script src="{{ base_url() }}/js/jquery.min.js"></script>
+    <script src="{{ base_url() }}/js/tether.min.js"></script>
+    <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{ base_url() }}/js/main.js"></script>
+</body>
+</html>

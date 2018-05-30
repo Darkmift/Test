@@ -1,0 +1,26 @@
+{% include 'home.twig'%}
+{% set page_title = 'Delete user' %}
+{% block content %} 
+
+
+		<div id="show" class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Verify course deletion</h4>
+			</div>
+				<form class="panel-body" action="{{ base_url() }}/manage/deletecourse/{{ course.id }}" method="post">
+					<div class="form-group">
+						<div class="input-group">
+							<bold class="form-span">Deleting {{ course.name }}, {{course.id}} from school will remove it from the database and delete all its enrollments of his students. Are you sure of this action?</bold>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-default" value="Yes">
+					<a href="{{ base_url() }}/manage/editcourse/{{course.id}}" class="btn btn-default">No</a>
+
+					{{ csrf.field | raw }}
+					
+				</form>
+		</div>
+	</div>
+ 
+ </div>
+{% endblock %}

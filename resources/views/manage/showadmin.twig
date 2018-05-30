@@ -1,0 +1,32 @@
+{% include 'admin.twig'%}
+{% set page_title = 'Show admin' %}
+{% block content %} 
+
+
+				<div id="showA" class="panel panel-default">
+					<div class="panel-heading">
+						<a href="{{ base_url() }}/admin/manage/editadmin/{{ admin.id }}" class="btn btn-default">✎</a>
+					</div>
+					<div class="panel-body">
+						<div id="container-details">
+							<img src="	{{ base_url() }}/images/admins/{{ admin.image }}" alt="{{ admin.name }}">
+							<div id="details">
+								<h2 id="admin_name">{{ admin.name }}</h2>
+								<h4 id="admin_phone">{{ admin.phone }}</h4>
+								<span id="admin_email">{{ admin.email }}</span>
+								<span id="admin_role">{{ admin.role }}</span>
+							</div>
+						</div>
+						<div class="specDetails">
+							<h5><strong>Created at:</strong></h5>		
+							<span id="admin_created_at">{{ admin.created_at }}</span>
+							<h5><strong>Updated at:</strong></h5>
+							<span id="admin_updated_at">{{ admin.updated_at }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+{% endblock %}

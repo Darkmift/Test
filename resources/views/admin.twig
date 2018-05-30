@@ -1,0 +1,58 @@
+{% include 'templates/app.twig'%}
+{% set page_title = 'admin' %}
+
+{% block content %} 
+				<div id="admin" class="menu row">
+					<div class="list col-sm-12 col-md-4">
+						<div class="list-title">
+							<h4>Users</h4>
+							<a href="{{ path_for('manage.createadmin') }}" class="btnAdd">+</a>
+						</div>
+						<nav class="list-group">
+							{% if auth.role < 3 %}
+								{% for user in auth.userslist[1:] %}
+									<a href="{{ base_url() }}/admin/manage/showadmin/{{ user.id }}" class="list-group-item list-group-item-action  ">
+										<img src="{{ base_url() }}/images/admins/{{ user.image }}" alt="{{ user.name }}">
+										<div class="list-text">
+											<span>{{user.name}}, {{ user.role }}</span>
+											<span>{{user.phone}}</span>
+											<span>{{user.email}}</span>
+										</div>
+									</a>
+								{% endfor %}
+							{% else %}
+								{% for user in auth.userslist %}
+									<a href="{{ base_url() }}/admin/manage/showadmin/{{ user.id }}" class="list-group-item list-group-item-action">
+										<img src="{{ base_url() }}/images/admins/{{ user.image }}" alt="{{ user.name }}">
+										<div class="list-text">
+											<span>{{user.name}}, {{ user.role }}</span>
+											<span>{{user.phone}}</span>
+											<span>{{user.email}}</span>
+										</div>
+									</a>
+								{% endfor %}
+							{% endif %}
+						</nav>
+					</div>
+					<div class="main col-md-6 col-sm-12">
+
+						{% if auth.role == 3 and not admin and adminPage %}
+						<ul>
+							<li>Number of users : {{ auth.userslist | length }}</li>
+							
+						</ul>
+						{% elseif auth.role < 3 and not admin and adminPage %}
+						<ul>
+							<li>Number of users : {{ auth.userslist | length  - 1 }}</li>
+						</ul>
+						{% endif %}
+						{% if not admin and auth.userslist | length == 0 %}
+							<span>Your school is empty of managers try to recruit some....</span>
+						{% endif %}
+
+
+
+			
+	
+<!-- 
+{% endblock %} -->

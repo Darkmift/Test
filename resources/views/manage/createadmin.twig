@@ -1,0 +1,90 @@
+{% include 'admin.twig'%}
+{% set page_title = 'Create user' %}
+{% block content %} 
+
+
+		<div id="createA" class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Create a new Manager / Sales</h4>
+			</div>
+				<form class="panel-body" action="{{path_for('manage.createadmin')}}" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div class="form-group{{errors.email ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">E-mail</span>
+							<input type="text" name="email" id="email" placeholder="you@domain.com" class="form-control" value="{{ old.email }}">
+						</div>
+						{% if errors.email %}
+						<span class="form-control-feedback">{{ errors.email | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group{{errors.name ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Name</span>
+							<input type="text" name="name" id="name" placeholder="Enter your name" class="form-control" value="{{ old.name }}">
+						</div>
+						{% if errors.name %}
+						<span class="form-control-feedback">{{ errors.name | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group  {{ errors.phone ? ' has-danger' : '' }}">
+                        <div class="input-group">
+                            <span class="input-group-addon form-span">phone</span>
+                            <input id="phone" name="phone" class="form-control" placeholder="enter your phone number" type="number" value="{{ old.phone }}">
+                        </div>
+                        {% if errors.phone %}
+						<span class="form-control-feedback">{{ errors.phone | first }}</span>
+						{% endif %}
+                    </div>
+					<div class="form-group{{errors.password ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Password</span>
+							<input type="password" name="password" id="password" placeholder="Enter your password" class="form-control">
+						</div>
+						{% if errors.password %}
+						<span class="form-control-feedback">{{ errors.password | first }}</span>
+						{% endif %}
+					</div>
+					<div class="form-group{{errors.confirm_password ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Confirm your password</span>
+							<input type="password" name="confirm_password" id="confirm_password" placeholder="Enter your password again for confirmation" class="form-control">
+						</div>
+						{% if errors.confirm_password %}
+						<span class="form-control-feedback">{{ errors.confirm_password | first }}</span>
+						{% endif %}
+					</div>
+                    <div class="form-group  {{ errors.role ? ' has-danger' : '' }}">
+                        <div class="input-group">
+                        	<span class="input-group">Choose the Role-user</span>
+                            <label class="radio-inline">
+                                <input type="radio" name="role" value="1">Sales
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="role" value="2">Administrator
+                            </label>
+                        </div>
+                        {% if errors.role %}
+						<span class="form-control-feedback">{{ errors.role | first }}</span>
+						{% endif %}
+                    </div>
+                   	<div class="form-group{{errors.image ? ' has-danger' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon form-span">Browse image</span>
+							<input type="file" name="image" id="image"  class="form-control" value="{{ old.image }}" >
+						</div>
+						{% if errors.image %}
+						<span class="form-control-feedback">{{ errors.image | first }}</span>
+						{% endif %}
+					</div>
+
+
+					<button type="submit" class="btn btn-default">Sign up</button>
+
+					{{ csrf.field | raw }}
+					
+				</form>
+		</div>
+	</div>
+ 
+ </div>
+{% endblock %}

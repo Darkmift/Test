@@ -1,0 +1,59 @@
+{% include 'home.twig'%}
+{% set page_title = 'Add student' %}
+{% block content %} 
+
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4>Create a new student</h4>
+					</div>
+						<form class="panel-body" action="{{path_for('manage.createstudent')}}" method="post" enctype="multipart/form-data" autocomplete="off">
+							<div class="form-group{{errors.name ? ' has-danger' : '' }}">
+								<div class="input-group">
+									<span class="input-group-addon form-span">Name</span>
+									<input type="text" name="name" id="name" placeholder="Enter the student name" class="form-control" value="{{ old.name }}">
+								</div>
+								{% if errors.name %}
+								<span class="form-control-feedback">{{ errors.name | first }}</span>
+								{% endif %}
+							</div>
+							<div class="form-group  {{ errors.phone ? ' has-danger' : '' }}">
+				                <div class="input-group">
+				                    <span class="input-group-addon form-span">Phone</span>
+				                    <input id="phone" name="phone" class="form-control" placeholder="enter the student phone number" type="number" value="{{ old.phone }}">
+				                </div>
+				                {% if errors.phone %}
+									<span class="form-control-feedback">{{ errors.phone | first }}</span>
+									{% endif %}
+				                </div>
+							<div class="form-group{{errors.email ? ' has-danger' : '' }}">
+								<div class="input-group">
+									<span class="input-group-addon form-span">E-mail</span>
+									<input type="text" name="email" id="email" placeholder="student@domain.com" class="form-control" value="{{ old.email }}">
+								</div>
+								{% if errors.email %}
+								<span class="form-control-feedback">{{ errors.email | first }}</span>
+								{% endif %}
+							</div>
+							<div class="form-group{{errors.image ? ' has-danger' : '' }}">
+								<div class="input-group">
+									<span class="input-group-addon form-span">Browse image</span>
+									<input type="file" name="image" id="image"  class="form-control" value="{{ old.email }}" >
+								</div>
+								{% if errors.image %}
+								<span class="form-control-feedback">{{ errors.image | first }}</span>
+								{% endif %}
+							</div>
+		                   
+		                    
+							<button type="submit" class="btn btn-default">Add student</button>
+		
+							{{ csrf.field | raw }}
+							
+						</form>
+				</div>
+			</div>
+	</div>
+
+
+{% endblock %}

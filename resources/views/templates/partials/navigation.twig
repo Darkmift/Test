@@ -1,0 +1,37 @@
+    
+<nav  id="nav" class="navbar navbar-toggleable-sm navbar-inverse">
+    <a class="navbar-brand text-primary" id="logo" href="{{ path_for('home') }}"> 
+        <img src="{{ base_url() }}/images/logo.png" alt="logo" id="logo-img">
+        <span class="text-primary">School</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> 
+    <div class="collapse navbar-collapse justify-content-end" id="navbar">
+        <ul class="navbar-nav">
+            {% if auth.check %}
+            <li class="nav-item">
+                <a class="nav-link text-primary" href="{{ path_for('home') }}">Home</a>
+            </li>
+            {% endif %}
+            {% if auth.role > 1 %}
+            <li class="nav-item">
+                <a class="nav-link text-primary" href="{{ path_for('admin') }}">Administration</a>
+            </li>
+            {% endif %}
+            {% if auth.check %}
+            <li class="nav-item dropdown float-right">
+                <a class="nav-link text-primary dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ auth.user.name }} ,{{ auth.user.role }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Edit</a>
+                    <a class="dropdown-item" href="{{ path_for('auth.password.change') }}">Change password</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path_for('auth.signout') }}">Sign-out</a>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

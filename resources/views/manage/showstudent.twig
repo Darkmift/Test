@@ -1,0 +1,54 @@
+{% include 'home.twig'%}
+{% set page_title = 'Show student' %}
+{% block content %} 
+
+
+				<div id="showS" class="panel panel-default ">
+					<div class="panel-heading">
+						<a href="{{ base_url() }}/manage/editstudent/{{ student.id }}" class="btn btn-default">✎</a>
+					</div>
+					<div class="panel-body ">
+						<div id="details">
+							<div>
+								<img src="{{ base_url() }}/images/students/{{ student.image }}" alt="{{ student.name }}">
+							</div>
+							<div>
+								<h2 id="student_name">{{ student.name }}</h2>
+								<h4 id="student_phone">{{ student.phone }}</h4>
+								<span id="student_email">{{ student.email }}</span>
+							</div>
+						</div>
+						<div class="specDetails">
+							<div id="enrollmentDiv" class="">
+								<h5><strong>Enroll to: {{hisEnroll | length }} courses</strong></h5>
+								<ul>
+									{% if not hisEnroll %}
+									<li><strong>This student did not enroll <br> for any course</strong></li>
+									{% endif %}
+								{% for rollment in hisEnroll %}
+									<li>
+										<strong>{{rollment.course_name}}</strong> course,<br>
+										<strong>by:</strong> {{rollment.user_name}},<br> 
+										<strong>at:</strong> {{rollment.created_at}}
+									</li>
+								{% endfor %}
+								</ul>
+							</div>
+							<div id="db-details" class="">
+								<h5><strong>Created at:</strong></h5>
+								<span id="student_created_at">{{ student.created_at }}</span>
+								<h5><strong>Updated at:</strong></h5>
+								<span id="student_updated_at">{{ student.updated_at }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<script src="{{ base_url() }}/js/jquery.min.js"></script>
+        <script src="{{ base_url() }}/js/tether.min.js"></script>
+        <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+</body>
+</html>		
+
+{% endblock %}

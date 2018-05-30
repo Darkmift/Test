@@ -1,0 +1,64 @@
+{% include 'templates/app.twig'%}
+
+
+{% block content %} 
+				<div id="home" class="menu row">
+					<div class="list col-md-6 col-lg-3">
+						<div class="list-title">
+							<h4>Courses</h4>
+							<a href="{{ path_for('manage.createcourse') }}" class="btnAdd">+</a>
+						</div>
+						<nav class="list-group">
+							{% for course in auth.courseslist %}
+								<a href="{{ base_url() }}/manage/showcourse/{{ course.id }}" class="list-group-item list-group-item-action">
+									<img src="{{ base_url() }}/images/courses/{{ course.image }}" alt="{{ course.name }}">
+									<div class="list-text">
+										<span>{{course.name}}</span>
+									</div>
+								</a>
+							{% endfor %}
+						</nav>
+					</div>
+					<div class="list col-md-6 col-lg-3">
+						<div class="list-title">
+							<h4>Student</h4>
+							<a href="{{ path_for('manage.createstudent') }}" class= "btnAdd">+</a>
+						</div>
+						<nav class="list-group">
+							{% for student in auth.studentslist %}
+								<a href="{{ base_url() }}/manage/showstudent/{{ student.id }}" class="list-group-item list-group-item-action">
+									<img src="{{ base_url() }}/images/students/{{ student.image }}" alt="{{ student.name }}">
+									<div class="list-text">
+										<span>{{student.name}}</span>
+										<span>{{student.phone}}</span>
+									</div>
+								</a>
+							{% endfor %}
+						</nav>
+					</div>
+				
+					<div class="main col-lg-5 col-md-12">
+						{% if not student and not course and homePage %}
+						<ul>
+							<li>Number of courses : {{ auth.courseslist | length }}</li>
+							<li>Number of students : {{ auth.studentslist | length }}</li>
+						</ul>
+						<!-- </div>
+						</div>
+						</div -->
+						{% endif %}
+
+						{% if not student and not course and auth.courseslist | length == 0 %}
+						<span>Your school is empty of students and courses try to invest in marketing and content...</span>
+						<!-- </div>
+						</div>
+						</div> -->
+						{% endif %}
+
+						
+
+
+	
+
+<!-- {% endblock %} -->
+

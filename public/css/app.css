@@ -1,0 +1,200 @@
+body{
+  /*background: url('../images/bcg.jpeg') no-repeat;*/
+  /*background-size: cover;*/
+    padding: .5rem;  
+}
+#logo img {
+  width: 35px;
+}
+#logo span {
+  color: black !important;
+  font-weight: bold;
+  font-size: 25px;
+}
+#nav {
+  background: linear-gradient(to left, rgba(0, 102, 255, 0), rgba(0, 102, 255, 1));
+}
+#nav button span {
+    background-color: rgba(0, 102, 255, .6);
+    border-radius: 4px;
+}
+#nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+#signIn .panel-heading {
+    padding-bottom: 1.5rem; 
+}
+#home {
+  padding: 1rem; 
+}
+.list-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.list .btnAdd {
+    display: block;
+    max-width: 25px;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 8px;  
+}
+.list .list-group {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 20rem;
+}
+.list .list-group a {
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 270px;
+    min-height: 100px;
+    padding: 0;
+    margin-bottom: .5rem;
+}
+.list .list-group a img {
+  width: 70px;
+  padding-left: .3rem;  
+  padding-right: .3rem 
+}
+.list .list-group a .list-text {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 1.3rem;
+  padding-bottom: 0.3rem;
+}
+.list .list-group a .list-text span {
+  width: 100%;  
+  line-height: 150%;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 1rem; 
+  box-sizing: content-box;
+}
+#admin {
+  padding: 1rem; 
+}
+#admin .list .list-group a {
+    justify-content: flex-start;
+}
+#showS {
+  width: 100%;
+  padding: 1rem;
+}
+#showS .panel-heading .btn {
+  font-size: 25px;
+  float: right;
+}
+#showS #details {
+  display: flex; 
+}
+#showS #details div img {
+  padding-bottom: 1rem;
+}
+#showS #details div:last-child {
+  padding-left: 1rem;
+}
+#showS .specDetails {
+  display: flex;
+  justify-content: space-between;
+  padding-top: .5rem; 
+}
+#showA {
+  width: 100%;
+  padding: 1rem;
+}
+#showA .panel-heading .btn {
+  float: right;
+  font-size: 25px;
+}
+#showA #details {
+  display: flex;
+  flex-wrap: wrap; 
+  padding-left: 1rem; 
+}
+#showA .panel-body img {
+  padding-bottom: 1rem;
+}
+#showA #container-details {
+  display: flex;
+  flex-wrap: nowrap;
+}
+#showA #details * {
+  width: 100%;
+}
+#showA #details div:last-child {
+  padding-left: 1rem;
+}
+#showA .specDetails {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: .5rem; 
+}
+#showA .specDetails h5 {
+  width: 100%;  
+}
+#showC {
+  width: 100%;
+  padding-top: 1rem;
+}
+#showC .panel-heading .btn {
+  float: right;
+  font-size: 25px;
+}
+#showC #details {
+  display: flex;
+  flex-wrap: nowrap; 
+  margin: 0;
+}
+#showC .panel-body > div > img {
+  padding-bottom: 1rem;
+  height: 180px;
+}
+#showC #details div:last-child {
+  width: 100%;
+  padding-left: 1rem;
+}
+#showC #details div:last-child p {
+  max-height: 200px;
+  max-width:300px; 
+  overflow-x: auto;
+}
+#showC .specDetails {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: .5rem; 
+}
+#showC .specDetails h5 {
+  width: 100%;  
+}
+#showC .registeredDetails ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  max-height: 200px;
+  overflow-x: auto;
+}
+#showC .registeredDetails ul li {
+  padding-bottom: .5rem;
+}
+#showC .registeredDetails img {
+  width: 80px;
+}
+#edit .del {
+  font-size: 25px;
+  float: right;
+}
+#edit label.radio-inline {
+  padding-right: 3rem; 
+}
+
+
+

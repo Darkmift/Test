@@ -1,0 +1,40 @@
+{% include 'home.twig'%}
+{% set page_title = 'Show course' %}
+{% block content %} 
+
+				<div id="showC" class="panel panel-default">
+					<div class="panel-heading">
+						{% if auth.role > 1 %}
+						<a href="{{ base_url() }}/manage/editcourse/{{ course.id }}" class="btn btn-default">✎</a>
+						{% endif %}
+					</div>
+					<div class="panel-body">
+						<div id="details">
+							<img src="	{{ base_url() }}/images/courses/{{ course.image }}" alt="{{ course.name }}">
+							<div>
+								<h2 id="course_name">{{ course.name }}, </h2>
+								<h2 id="course_countRegistered">{{allRegistered | length}} Students</h2>
+								<p id="course_description">{{ course.description }}</p>
+							</div>
+						</div>
+						<div class="specDetails">
+							<h5><strong>Created at:</strong></h5>
+							<span  id="course_created_at">{{ course.created_at }}</span>
+						</div>
+						<div class="registeredDetails">
+							<ul class="row">	
+								{% for student in allRegistered %}
+								<li class="col-lg-4 col-xs-6">
+									<img src="{{ base_url() }}/images/students/{{ student.student_name }}.jpeg.jpeg" alt="{{student.student_name}}">
+									<span>{{student.student_name}}</span>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+{% endblock %}
